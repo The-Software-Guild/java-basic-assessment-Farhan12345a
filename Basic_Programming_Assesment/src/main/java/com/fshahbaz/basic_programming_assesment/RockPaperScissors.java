@@ -1,5 +1,8 @@
-/*
- * FILL OUT WITH CORRECT INFORMATION
+/**Name: Farhan Shahbaz
+ * Date: July 27th, 2021
+ * Assignment: Rock, Paper, Scissors
+ *
+ * 
  */
 package com.fshahbaz.basic_programming_assesment;
 
@@ -11,12 +14,15 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class RockPaperScissors {
-            static int roundsTied = 0;
-            static int userWins = 0;
-            static int computerWins = 0;
+    //Round variables declared outside of main because they're used in other methods
+    static int roundsTied = 0;
+    static int userWins = 0;
+    static int computerWins = 0;
+    
     public static void main(String[] args){
         Scanner scan = new Scanner(System.in);
         Random rand = new Random();
+        //Flag for when game needs to end
         boolean game = true;
         
         while(game){
@@ -34,34 +40,16 @@ public class RockPaperScissors {
             
             String[] arr = {"Rock", "Paper", "Scissors"};
 
+            //Iterates through the number of rounds
             for(int i = 1; i <= rounds;i++){
                 System.out.println("Choose between Rock, Paper, or Scissors: (1 = Rock, 2 = Paper, 3 = Scissors) ");
                 int playerChoice = Integer.parseInt(scan.nextLine());
                 int computerChoice = rand.nextInt(3);
                 System.out.println("Computer Chose: " + arr[computerChoice]);
                 
-                //Put in method
                 roundDetermine(playerChoice,computerChoice);
-                //Handling a tie
-//                if(((playerChoice == 1) && (computerChoice == 0)) || ((playerChoice == 2) && (computerChoice == 1)) || ((playerChoice == 3) && (computerChoice == 2))){
-//                    System.out.println("Tie");
-//                    roundsTied++;
-//
-//                    //User Winning
-//                }else if((playerChoice == 1) && (computerChoice == 2) || (playerChoice == 2) && (computerChoice == 0) || (playerChoice == 3) && (computerChoice == 1) ){
-//                    System.out.println("User Wins!");
-//                    userWins++;
-//                    //Computer Winning
-//                    //See if this can be a simple else statement
-//                }else if((playerChoice == 3) && (computerChoice == 0) || (playerChoice == 1) && (computerChoice == 1) || (playerChoice == 2) && (computerChoice == 2)) {
-//                    System.out.println("Computer Wins!");
-//                    computerWins++;
-//                }
-                
                 System.out.println();
         }
-            
-            
             
             //Printing out User Wins, Computer Wins, and Ties
             System.out.println("Number of Ties: " + roundsTied + 
@@ -75,6 +63,7 @@ public class RockPaperScissors {
             System.out.println("Would you like to play again?");
             String input = scan.nextLine();
             
+            //Handling user input based on whether they want to play again
             if(input.equals("Yes".toLowerCase())){
                 System.out.println("Starting Rock,Paper,Scissors Again ... ");
                 //Resting round winner values to original
@@ -94,6 +83,7 @@ public class RockPaperScissors {
     
     }
     
+    //Method that determines overall winner
     public static void roundWinner(){
         if(userWins > computerWins){
                 System.out.println("User is the overall Winner");
@@ -105,21 +95,21 @@ public class RockPaperScissors {
         
     }
     
+    //Method that determines round winner
     public static void roundDetermine(int playerChoice, int computerChoice){
         if(((playerChoice == 1) && (computerChoice == 0)) || ((playerChoice == 2) && (computerChoice == 1)) || ((playerChoice == 3) && (computerChoice == 2))){
                     System.out.println("Tie");
                     roundsTied++;
-
-                    //User Winning
+                    
+                //User Winning
                 }else if((playerChoice == 1) && (computerChoice == 2) || (playerChoice == 2) && (computerChoice == 0) || (playerChoice == 3) && (computerChoice == 1) ){
                     System.out.println("User Wins!");
                     userWins++;
-                    //Computer Winning
-                    //See if this can be a simple else statement
+                    
+                //Computer Winning
                 }else {
                     System.out.println("Computer Wins!");
                     computerWins++;
                 }
-        
     }
 }
